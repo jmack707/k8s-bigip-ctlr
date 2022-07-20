@@ -270,7 +270,7 @@ Check the ingresslink resource configuration
         selector:
         matchLabels:
             app: nginx-ingress
-        virtualServerAddress: 10.192.75.110
+        virtualServerAddress: 10.1.10.110
     kind: List
     metadata:
     resourceVersion: ""
