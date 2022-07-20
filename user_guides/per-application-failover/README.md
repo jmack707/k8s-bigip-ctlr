@@ -36,11 +36,11 @@ args: [
   # https://clouddocs.f5.com/containers/latest/
     "--bigip-username=$(BIGIP_USERNAME)",
     "--bigip-password=$(BIGIP_PASSWORD)",
-    "--bigip-url=192.168.200.60",
+    "--bigip-url=10.1.1.245",
     "--bigip-partition=k8s",
     "--gtm-bigip-username=$(BIGIP_USERNAME)",
     "--gtm-bigip-password=$(BIGIP_PASSWORD)",
-    "--gtm-bigip-url=192.168.200.60",
+    "--gtm-bigip-url=10.1.1.245",
     "--namespace=nginx-ingress",
     "--pool-member-type=cluster",
     "--flannel-name=fl-vxlan",
