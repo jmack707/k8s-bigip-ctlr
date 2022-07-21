@@ -2,4 +2,4 @@ tmsh create net tunnels vxlan fl-vxlan port 8472 flooding-type none
 tmsh create net tunnels tunnel fl-vxlan { app-service none key 1 local-address 10.1.20.4 profile fl-vxlan }
 tmsh create net self fl-vxlan { address 10.244.20.1/16 vlan fl-vxlan  allow-service all }
 
-show  net tunnels tunnel fl-vxlan all-properties
+tmsh show  net tunnels tunnel fl-vxlan all-properties
