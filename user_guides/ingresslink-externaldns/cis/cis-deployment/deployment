@@ -1,0 +1,5 @@
+kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=bigip123
+kubectl create -f cis-deployment/bigip-ctlr-clusterrole.yaml
+kubectl create -f cis-crd-schema/customresourcedefinition.yaml
+kubectl create -f cis-deployment/f5-bigip-ctlr-deployment.yaml
+kubectl create -f cis-deployment/f5-bigip-node.yaml
