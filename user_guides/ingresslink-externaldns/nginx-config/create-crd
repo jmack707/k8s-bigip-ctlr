@@ -1,0 +1,4 @@
+kubectl apply -f crd-schema/k8s.nginx.org_virtualservers.yaml
+kubectl apply -f crd-schema/k8s.nginx.org_virtualserverroutes.yaml
+kubectl apply -f crd-schema/k8s.nginx.org_transportservers.yaml
+kubectl apply -f crd-schema/k8s.nginx.org_policies.yaml
