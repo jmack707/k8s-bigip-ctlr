@@ -4,7 +4,7 @@ metadata:
   name: vs-ingresslink
   namespace: nginx-ingress
 spec:
-  virtualServerAddress: "10.192.75.121"
+  virtualServerAddress: "10.1.10.100"
   host: cafe.example.com
   iRules:
     - /Common/Proxy_Protocol_iRule
