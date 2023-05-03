@@ -6,7 +6,7 @@ metadata:
   labels:
     f5cr: "true"
 spec:
-  host: coffee.example.com
+  host: coffee.1broken.net
   hostGroup: "cafe"
   virtualServerAddress: "10.192.75.117"
   virtualServerHTTPSPort: 443
@@ -17,7 +17,7 @@ spec:
   - monitor:
       interval: 20
       recv: ""
-      send: "GET /coffee HTTP/1.1\r\nHost: coffee.example.com\r\n"
+      send: "GET /coffee HTTP/1.1\r\nHost: coffee.1broken.net\r\n"
       timeout: 10
       type: https
     path: /coffee

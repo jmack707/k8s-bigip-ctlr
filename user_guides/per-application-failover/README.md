@@ -129,30 +129,30 @@ View the Ingress resources for the **cafe** applications:
 ```
 ❯ kubectl get ingress
 NAME                  CLASS    HOSTS                     ADDRESS   PORTS     AGE
-brew-ingress          <none>   brew.example.com                    80, 443   21h
-chai-ingress          <none>   chai.example.com                    80, 443   21h
-coffee-ingress        <none>   coffee.example.com                  80, 443   3d20h
-flatwhite-ingress     <none>   flatwhite.example.com               80, 443   21h
-frappuccino-ingress   <none>   frappuccino.example.com             80, 443   21h
-latte-ingress         <none>   latte.example.com                   80, 443   3d18h
-macchiato-ingress     <none>   macchiato.example.com               80, 443   21h
-mocha-ingress         <none>   mocha.example.com                   80, 443   3d18h
-smoothie-ingress      <none>   smoothie.example.com                80, 443   21h
-tea-ingress           <none>   tea.example.com                     80, 443   3d20h
+brew-ingress          <none>   brew.1broken.net                    80, 443   21h
+chai-ingress          <none>   chai.1broken.net                    80, 443   21h
+coffee-ingress        <none>   coffee.1broken.net                  80, 443   3d20h
+flatwhite-ingress     <none>   flatwhite.1broken.net               80, 443   21h
+frappuccino-ingress   <none>   frappuccino.1broken.net             80, 443   21h
+latte-ingress         <none>   latte.1broken.net                   80, 443   3d18h
+macchiato-ingress     <none>   macchiato.1broken.net               80, 443   21h
+mocha-ingress         <none>   mocha.1broken.net                   80, 443   3d18h
+smoothie-ingress      <none>   smoothie.1broken.net                80, 443   21h
+tea-ingress           <none>   tea.1broken.net                     80, 443   3d20h
 ```
 
 ingress-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/per-application-failover/ingress-example)
 
 ## Step 4: Create VirtualServer, TLSProfile, ExternalDNS CRDs
 
-The diagram below demonstrates the combination mapping of the VirtualServer, TLSProfile, ExternalDNS CRDs for application **tea.example.com**:
+The diagram below demonstrates the combination mapping of the VirtualServer, TLSProfile, ExternalDNS CRDs for application **tea.1broken.net**:
 
 - Reencrypt Termination
 - Redirect HTTP to HTTPS
-- SNI HTTPS Health monitor of the backend application using HOST **tea.example.com** and **PATH /tea**
+- SNI HTTPS Health monitor of the backend application using HOST **tea.1broken.net** and **PATH /tea**
 - End-to-end-TLS
 - Re-use the same **virtualServerAddress: "10.192.75.117"** for all cafe application
-- Hostname load balancing based on the HOST **tea.example.com** and **PATH /tea**
+- Hostname load balancing based on the HOST **tea.1broken.net** and **PATH /tea**
 
 ![combo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-02-01_12-31-07.png)
 
@@ -195,16 +195,16 @@ Validated the **VirtualServer** and **TLSProfile** CRDs in Kubernetes
 ```
 ❯ kubectl get vs,TLSProfile -n nginx-ingress
 NAME                                      HOST                      TLSPROFILENAME          HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/vs-brew          brew.example.com          reencrypt-brew          redirect      10.192.75.117               None            Ok       20h
-virtualserver.cis.f5.com/vs-chai          chai.example.com          reencrypt-chai          redirect      10.192.75.117               None            Ok       20h
-virtualserver.cis.f5.com/vs-coffee        coffee.example.com        reencrypt-coffee        redirect      10.192.75.117               None            Ok       20h
-virtualserver.cis.f5.com/vs-flatwhite     flatwhite.example.com     reencrypt-flatwhite     redirect      10.192.75.117               None            Ok       20h
-virtualserver.cis.f5.com/vs-frappuccino   frappuccino.example.com   reencrypt-frappuccino   redirect      10.192.75.117               None            Ok       20h
-virtualserver.cis.f5.com/vs-latte         latte.example.com         reencrypt-latte         redirect      10.192.75.117               None            Ok       20h
-virtualserver.cis.f5.com/vs-macchiato     macchiato.example.com     reencrypt-macchiato     redirect      10.192.75.117               None            Ok       20h
-virtualserver.cis.f5.com/vs-mocha         mocha.example.com         reencrypt-mocha         redirect      10.192.75.117               None            Ok       20h
-virtualserver.cis.f5.com/vs-smoothie      smoothie.example.com      reencrypt-smoothie      redirect      10.192.75.117               None            Ok       19h
-virtualserver.cis.f5.com/vs-tea           tea.example.com           reencrypt-tea           redirect      10.192.75.117               None            Ok       19h
+virtualserver.cis.f5.com/vs-brew          brew.1broken.net          reencrypt-brew          redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-chai          chai.1broken.net          reencrypt-chai          redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-coffee        coffee.1broken.net        reencrypt-coffee        redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-flatwhite     flatwhite.1broken.net     reencrypt-flatwhite     redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-frappuccino   frappuccino.1broken.net   reencrypt-frappuccino   redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-latte         latte.1broken.net         reencrypt-latte         redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-macchiato     macchiato.1broken.net     reencrypt-macchiato     redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-mocha         mocha.1broken.net         reencrypt-mocha         redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-smoothie      smoothie.1broken.net      reencrypt-smoothie      redirect      10.192.75.117               None            Ok       19h
+virtualserver.cis.f5.com/vs-tea           tea.1broken.net           reencrypt-tea           redirect      10.192.75.117               None            Ok       19h
 
 NAME                                          AGE
 tlsprofile.cis.f5.com/reencrypt-brew          20h
@@ -246,23 +246,23 @@ Validated ExternalDNS CRDs
 ```
 ❯ kubectl get externaldns -n nginx-ingress
 NAME               DOMAINNAME                AGE   CREATED ON
-edns-brew          brew.example.com          20h   2022-01-31T23:40:18Z
-edns-chai          chai.example.com          20h   2022-01-31T23:17:07Z
-edns-coffee        coffee.example.com        20h   2022-01-31T23:09:28Z
-edns-flatwhite     flatwhite.example.com     20h   2022-01-31T23:18:46Z
-edns-frappuccino   frappuccino.example.com   20h   2022-01-31T23:46:15Z
-edns-latte         latte.example.com         20h   2022-01-31T23:21:09Z
-edns-macchiato     macchiato.example.com     19h   2022-01-31T23:47:25Z
-edns-mocha         mocha.example.com         20h   2022-01-31T23:43:44Z
-edns-smoothie      smoothie.example.com      19h   2022-01-31T23:49:56Z
-edns-tea           tea.example.com           19h   2022-01-31T23:50:45Z                                      
+edns-brew          brew.1broken.net          20h   2022-01-31T23:40:18Z
+edns-chai          chai.1broken.net          20h   2022-01-31T23:17:07Z
+edns-coffee        coffee.1broken.net        20h   2022-01-31T23:09:28Z
+edns-flatwhite     flatwhite.1broken.net     20h   2022-01-31T23:18:46Z
+edns-frappuccino   frappuccino.1broken.net   20h   2022-01-31T23:46:15Z
+edns-latte         latte.1broken.net         20h   2022-01-31T23:21:09Z
+edns-macchiato     macchiato.1broken.net     19h   2022-01-31T23:47:25Z
+edns-mocha         mocha.1broken.net         20h   2022-01-31T23:43:44Z
+edns-smoothie      smoothie.1broken.net      19h   2022-01-31T23:49:56Z
+edns-tea           tea.1broken.net           19h   2022-01-31T23:50:45Z                                      
 ```
 
 Validated Wide IP on BIG-IP DNS
 
 ![Wide IP](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-01-31_15-55-49.png)
 
-Validated DNS monitor for application **tea.example.com**
+Validated DNS monitor for application **tea.1broken.net**
 
 ![Wide IP](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/per-application-failover/diagram/2022-02-01_12-50-26.png)
 

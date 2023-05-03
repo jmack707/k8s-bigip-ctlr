@@ -93,8 +93,8 @@ Validate both CIS and IPAM deployments
 
 ```
 ❯ kubectl get pods --all-namespaces -owide |grep -i 'cis\|ipam\|dep'
-kube-system   f5-ipam-controller-95dd8fc9-qtvhg                          1/1     Running   0          75m    10.244.1.40      k8s-1-19-node1.example.com    <none>           <none>
-kube-system   k8s-bigip-ctlr-deployment-6469bfdd94-h2z6x                 1/1     Running   0          51m    10.244.2.157     k8s-1-19-node2.example.com    <none>           <none>
+kube-system   f5-ipam-controller-95dd8fc9-qtvhg                          1/1     Running   0          75m    10.244.1.40      k8s-1-19-node1.1broken.net    <none>           <none>
+kube-system   k8s-bigip-ctlr-deployment-6469bfdd94-h2z6x                 1/1     Running   0          51m    10.244.2.157     k8s-1-19-node2.1broken.net    <none>           <none>
 ```
 
 ## Logging output from IPAM Controller

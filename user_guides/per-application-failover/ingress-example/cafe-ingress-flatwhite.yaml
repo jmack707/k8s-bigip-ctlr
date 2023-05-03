@@ -9,10 +9,10 @@ spec:
   # ingressClassName: nginx # use only with k8s version >= 1.18.0
   tls:
   - hosts:
-    - flatwhite.example.com
+    - flatwhite.1broken.net
     secretName: cafe-secret
   rules:
-  - host: flatwhite.example.com
+  - host: flatwhite.1broken.net
     http:
       paths:
       - path: /flatwhite

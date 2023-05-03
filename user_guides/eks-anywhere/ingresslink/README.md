@@ -190,7 +190,7 @@ cafe application [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/u
 ### Test the Application
 
 1. To access the application, curl the coffee and the tea services. We'll use ```curl```'s --insecure option to turn off certificate verification of our self-signed
-certificate and the --resolve option to set the Host header of a request with ```cafe.example.com```
+certificate and the --resolve option to set the Host header of a request with ```cafe.1broken.net```
     
 To get coffee:
 

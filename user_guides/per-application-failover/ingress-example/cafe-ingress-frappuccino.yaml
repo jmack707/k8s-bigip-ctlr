@@ -9,10 +9,10 @@ spec:
   # ingressClassName: nginx # use only with k8s version >= 1.18.0
   tls:
   - hosts:
-    - frappuccino.example.com
+    - frappuccino.1broken.net
     secretName: cafe-secret
   rules:
-  - host: frappuccino.example.com
+  - host: frappuccino.1broken.net
     http:
       paths:
       - path: /frappuccino

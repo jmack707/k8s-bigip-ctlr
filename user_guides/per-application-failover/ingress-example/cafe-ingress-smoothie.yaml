@@ -9,10 +9,10 @@ spec:
   # ingressClassName: nginx # use only with k8s version >= 1.18.0
   tls:
   - hosts:
-    - smoothie.example.com
+    - smoothie.1broken.net
     secretName: cafe-secret
   rules:
-  - host: smoothie.example.com
+  - host: smoothie.1broken.net
     http:
       paths:
       - path: /smoothie

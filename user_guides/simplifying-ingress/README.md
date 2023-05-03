@@ -99,7 +99,7 @@ Modify the persistent volume manifest file that meets your kubernetes deployment
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - k8s-1-19-node1.example.com
+          - k8s-1-19-node1.1broken.net
 ```
 
 ### Deploy RBAC, Schema, F5 IPAM Controller and Persistent Volumes deployment files
@@ -202,10 +202,10 @@ Validate the external IP address on BIG-IP
 
 Connext to Cafe App for Coffee and Tea
 
-* cafe.example.com/coffee
+* cafe.1broken.net/coffee
 
 ![CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/diagram/2021-10-18_14-53-03.png)
 
-* cafe.example.com/tea
+* cafe.1broken.net/tea
 
 ![CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/diagram/2021-10-18_14-53-34.png)

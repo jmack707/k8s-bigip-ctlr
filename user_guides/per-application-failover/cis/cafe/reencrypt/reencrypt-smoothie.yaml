@@ -12,4 +12,4 @@ spec:
     serverSSL: /Common/serverssl
     reference: bigip
   hosts:
-  - smoothie.example.com
+  - smoothie.1broken.net

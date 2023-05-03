@@ -10,7 +10,7 @@ This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Contro
 
 Demo [YouTube](https://youtu.be/XdFqcCZWe5U)
 
-This user-guide demonstrates a single Wide IP **cafe.example.com** which answers for both coffee and tea deployments. DNS has no layer 7 path awareness and therefore a DNS monitor is required to determine the health of the deployments. Recommendation would be to create a dedicated http status page for the DNS monitor, monitoring required deployments etc. IF the monitor detects the http status failure, the Wide IP is removed from BIG-IP DNS. Another option is to have a 1-1 mapping between the Wide IPand service. 
+This user-guide demonstrates a single Wide IP **cafe.1broken.net** which answers for both coffee and tea deployments. DNS has no layer 7 path awareness and therefore a DNS monitor is required to determine the health of the deployments. Recommendation would be to create a dedicated http status page for the DNS monitor, monitoring required deployments etc. IF the monitor detects the http status failure, the Wide IP is removed from BIG-IP DNS. Another option is to have a 1-1 mapping between the Wide IPand service. 
 
 ## Prerequisites
 
@@ -91,7 +91,7 @@ Modify the persistent volume manifest file that meets your kubernetes deployment
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - k8s-1-19-node1.example.com
+          - k8s-1-19-node1.1broken.net
 ```
 
 ### Deploy F5 IPAM Controller and Persistent Volumes deployment files
@@ -171,17 +171,17 @@ Create the coffee and the tea ExternalDNS CRD
 
 Validated VirtualServer CRD and ExternalCRD
 
-**Note** IPAM has provided the external IP address for **cafe.example.com**. **hostGroup: "cafe"** is configured in the VirtualServer CRDs to maintain the same external IP address for all VirtualServer CRDs
+**Note** IPAM has provided the external IP address for **cafe.1broken.net**. **hostGroup: "cafe"** is configured in the VirtualServer CRDs to maintain the same external IP address for all VirtualServer CRDs
 
 ```
 ❯ kubectl get crd,vs,externaldns -n nginx-ingress
 NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS   IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/vs-coffee   cafe.example.com   reencrypt-tls    redirect                  Test        10.192.75.117   Ok       6d3h
-virtualserver.cis.f5.com/vs-tea      cafe.example.com   reencrypt-tls    redirect                  Test        10.192.75.117   Ok       6d2h
+virtualserver.cis.f5.com/vs-coffee   cafe.1broken.net   reencrypt-tls    redirect                  Test        10.192.75.117   Ok       6d3h
+virtualserver.cis.f5.com/vs-tea      cafe.1broken.net   reencrypt-tls    redirect                  Test        10.192.75.117   Ok       6d2h
 
 NAME                                 DOMAINNAME         AGE     CREATED ON
-externaldns.cis.f5.com/edns-coffee   cafe.example.com   2d15h   2022-01-11T06:36:44Z
-externaldns.cis.f5.com/edns-tea      cafe.example.com   27h     2022-01-12T18:57:08Z                                               
+externaldns.cis.f5.com/edns-coffee   cafe.1broken.net   2d15h   2022-01-11T06:36:44Z
+externaldns.cis.f5.com/edns-tea      cafe.1broken.net   27h     2022-01-12T18:57:08Z                                               
 ```
 
 Validated Wide IP on BIG-IP DNS

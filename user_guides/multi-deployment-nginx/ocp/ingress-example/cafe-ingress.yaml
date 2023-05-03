@@ -6,10 +6,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - cafe.example.com
+    - cafe.1broken.net
     secretName: cafe-secret
   rules:
-  - host: cafe.example.com
+  - host: cafe.1broken.net
     http:
       paths:
       - path: /tea

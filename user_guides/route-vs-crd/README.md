@@ -62,7 +62,7 @@ User-case for the OpenShift Routes:
 
 - Edge Termination
 - Redirect HTTP to HTTPS
-- Health monitor of the backend NGINX application using HOST **cafe.example.com** and **PATH /coffee, /tea and /mocha**
+- Health monitor of the backend NGINX application using HOST **cafe.1broken.net** and **PATH /coffee, /tea and /mocha**
 - Custom HTTP Policy for X-Forwarded-For (XFF) HTTP header field - **Use AS3 override**
 - Backend listening on PORT 8080
 
@@ -147,7 +147,7 @@ Similar User-case for the CRDs:
 
 - Edge Termination
 - Redirect HTTP to HTTPS
-- Health monitor of the backend NGINX application using HOST **cafe.example.com** and **PATH /coffee, /tea and /mocha**
+- Health monitor of the backend NGINX application using HOST **cafe.1broken.net** and **PATH /coffee, /tea and /mocha**
 - Custom HTTP Policy for X-Forwarded-For (XFF) HTTP header field
 - Backend listening on PORT 8080
 
@@ -186,9 +186,9 @@ Validate OpenShift Routes using from OpenShift
 ```
 # oc get crd,vs,policy,tlsprofile -n default
 NAME                                   HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/cafe-coffee   cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
-virtualserver.cis.f5.com/cafe-mocha    cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
-virtualserver.cis.f5.com/cafe-tea      cafe.example.com   edge-tls         redirect      10.192.125.65               None            Ok       68s
+virtualserver.cis.f5.com/cafe-coffee   cafe.1broken.net   edge-tls         redirect      10.192.125.65                                        68s
+virtualserver.cis.f5.com/cafe-mocha    cafe.1broken.net   edge-tls         redirect      10.192.125.65                                        68s
+virtualserver.cis.f5.com/cafe-tea      cafe.1broken.net   edge-tls         redirect      10.192.125.65               None            Ok       68s
 
 NAME                            AGE
 policy.cis.f5.com/cafe-policy   68s

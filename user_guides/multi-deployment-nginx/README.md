@@ -10,7 +10,7 @@ In this user-guide, we have deployed an OpenShift and Kubernetes container envir
 
 Demo on YouTube [video](https://youtu.be/i0gl2qPbwXI)
 
-This user-guide demonstrates an application having a Wide IP's HOST name **cafe.example.com**  which answers using **round-robin** for the OpenShift or Kubernetes environments. DNS has no layer seven path awareness and therefore DNS monitors are required to determine the health of the applications **/coffee** and **/tea**. Each ExternalDNS CRD specifies the DNS monitors on BIG-IP. Recommended to work with your F5 Solution Architect to discuss DNS monitoring and scaling. If a monitor detects the http status failure, the Wide IP is removed from the DNS query.
+This user-guide demonstrates an application having a Wide IP's HOST name **cafe.1broken.net**  which answers using **round-robin** for the OpenShift or Kubernetes environments. DNS has no layer seven path awareness and therefore DNS monitors are required to determine the health of the applications **/coffee** and **/tea**. Each ExternalDNS CRD specifies the DNS monitors on BIG-IP. Recommended to work with your F5 Solution Architect to discuss DNS monitoring and scaling. If a monitor detects the http status failure, the Wide IP is removed from the DNS query.
 
 ### Environment parameters
 
@@ -173,8 +173,8 @@ Use-case for the CRDs:
 - Secure
 - HTTP to HTTPS redirect
 - Re-encrypt TLS between Client and NGINX Ingress Controller
-- HTTPS Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
-- Same Hostname **cafe.example.com** for OpenShift and Kubernetes environments
+- HTTPS Health monitor of the backend application using HOST **cafe.1broken.net** and **PATH /coffee, and /tea**
+- Same Hostname **cafe.1broken.net** for OpenShift and Kubernetes environments
 
 Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
 
@@ -208,21 +208,21 @@ CRD [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/mu
 ```
 # oc get crd,vs,tlsprofile,externaldns -n nginx-ingress
 NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS        IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/vs-coffee   cafe.example.com   reencrypt-cafe   redirect      10.192.125.121               None            Ok       5d
-virtualserver.cis.f5.com/vs-tea      cafe.example.com   reencrypt-cafe   redirect      10.192.125.121               None            Ok       5d
+virtualserver.cis.f5.com/vs-coffee   cafe.1broken.net   reencrypt-cafe   redirect      10.192.125.121               None            Ok       5d
+virtualserver.cis.f5.com/vs-tea      cafe.1broken.net   reencrypt-cafe   redirect      10.192.125.121               None            Ok       5d
 
 NAME                                   AGE
 tlsprofile.cis.f5.com/reencrypt-cafe   5d19h
 
 NAME                               DOMAINNAME         AGE   CREATED ON
-externaldns.cis.f5.com/edns-cafe   cafe.example.com   5d    2022-03-03T18:31:29Z
+externaldns.cis.f5.com/edns-cafe   cafe.1broken.net   5d    2022-03-03T18:31:29Z
 ```
 
 #### Validate CRD using the BIG-IP
 
 ![big-ip CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_11-16-43.png)
 
-#### Validate CRD policy for cafe.example.com on BIG-IP
+#### Validate CRD policy for cafe.1broken.net on BIG-IP
 
 ![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/multi-deployment-nginx/diagram/2022-03-08_11-17-14.png)
 
@@ -233,8 +233,8 @@ Use-case for the CRDs:
 - Secure
 - HTTP to HTTPS redirect
 - Re-encrypt TLS between Client and NGINX Ingress Controller
-- HTTPS Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
-- Same Hostname **cafe.example.com** for OpenShift and Kubernetes environments
+- HTTPS Health monitor of the backend application using HOST **cafe.1broken.net** and **PATH /coffee, and /tea**
+- Same Hostname **cafe.1broken.net** for OpenShift and Kubernetes environments
 
 Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
 
@@ -266,14 +266,14 @@ CRD [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/mu
 ```
 ❯ kubectl get crd,vs,tlsprofile,externaldns -n nginx-ingress
 NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/vs-coffee   cafe.example.com   reencrypt-cafe   redirect      10.192.75.121               None            Ok       5d2h
-virtualserver.cis.f5.com/vs-tea      cafe.example.com   reencrypt-cafe   redirect      10.192.75.121               None            Ok       5d2h
+virtualserver.cis.f5.com/vs-coffee   cafe.1broken.net   reencrypt-cafe   redirect      10.192.75.121               None            Ok       5d2h
+virtualserver.cis.f5.com/vs-tea      cafe.1broken.net   reencrypt-cafe   redirect      10.192.75.121               None            Ok       5d2h
 
 NAME                                   AGE
 tlsprofile.cis.f5.com/reencrypt-cafe   5d22h
 
 NAME                               DOMAINNAME         AGE    CREATED ON
-externaldns.cis.f5.com/edns-cafe   cafe.example.com   5d2h   2022-03-03T18:27:10Z
+externaldns.cis.f5.com/edns-cafe   cafe.1broken.net   5d2h   2022-03-03T18:27:10Z
 ```
 
 #### Validate CRD using the BIG-IP

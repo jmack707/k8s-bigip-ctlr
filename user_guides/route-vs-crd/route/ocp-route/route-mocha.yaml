@@ -12,14 +12,14 @@
       virtual-server.f5.com/health: |
         [
           {
-            "path": "cafe.example.com/",
+            "path": "cafe.1broken.net/",
             "send": "HTTP GET /mocha",
             "interval": 5,
             "timeout": 10
           }
         ]
   spec:
-    host: cafe.example.com
+    host: cafe.1broken.net
     path: "/mocha"
     port:
       targetPort: 8080
