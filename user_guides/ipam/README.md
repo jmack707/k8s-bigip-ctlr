@@ -35,7 +35,7 @@ Add the parameter --ipam=true in the CIS deployment to provide the integration w
 args: 
   - "--bigip-username=$(BIGIP_USERNAME)"
   - "--bigip-password=$(BIGIP_PASSWORD)"
-  - "--bigip-url=10.1.1.245"
+  - "--bigip-url=172.16.1245"
   - "--bigip-partition=k8s"
   - "--namespace=default"
   - "--pool-member-type=cluster"

@@ -224,7 +224,7 @@ Check the CIS API communication with BIG-IP using DEBUG logging. Below is a succ
 
     $ kubectl logs -f deploy/k8s-bigip-ctlr-deployment -n kube-system | grep --color=auto -i '\[as3'
     2021/03/02 00:17:09 [DEBUG] [AS3] PostManager Accepted the configuration
-    2021/03/02 00:17:09 [DEBUG] [AS3] posting request to https://10.1.1.245/mgmt/shared/appsvcs/declare/
+    2021/03/02 00:17:09 [DEBUG] [AS3] posting request to https://172.16.1245/mgmt/shared/appsvcs/declare/
     2021/03/02 00:17:12 [DEBUG] [AS3] Response from BIG-IP: code: 200 --- tenant:ingresslink --- message: success
 
 Check the ingresslink resource 

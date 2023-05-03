@@ -56,7 +56,7 @@ In this user-guide, I deployed Kube-VIP as a DaemonSet. The installation documen
 - name: bgp_peeras
     value: "65000"
 - name: bgp_peers
-    value: "10.1.1.245:65000::false"
+    value: "172.16.1245:65000::false"
 - name: address
     value: 192.168.200.117
 ```
@@ -76,7 +76,7 @@ time="2022-02-10T21:29:59Z" level=info msg="server started"
 time="2022-02-10T21:29:59Z" level=info msg="Starting Kube-vip Manager with the BGP engine"
 time="2022-02-10T21:29:59Z" level=info msg="Namespace [kube-system], Hybrid mode [true]"
 time="2022-02-10T21:29:59Z" level=info msg="Starting the BGP server to advertise VIP routes to BGP peers"
-time="2022-02-10T21:29:59Z" level=info msg="Add a peer configuration for:10.1.1.245" Topic=Peer
+time="2022-02-10T21:29:59Z" level=info msg="Add a peer configuration for:172.16.1245" Topic=Peer
 time="2022-02-10T21:29:59Z" level=info msg="Beginning watching services for type: LoadBalancer in all namespaces"
 time="2022-02-10T21:29:59Z" level=info msg="Service [kubernetes] has been added/modified, it has no assigned external addresses"
 time="2022-02-10T21:29:59Z" level=info msg="Service [nginx-ingress] has been added/modified, it has an assigned external addresses [192.168.200.14]"
@@ -86,8 +86,8 @@ time="2022-02-10T21:29:59Z" level=info msg="Started Load Balancer and Virtual IP
 time="2022-02-10T21:29:59Z" level=info msg="Service [coffee-svc] has been added/modified, it has no assigned external addresses"
 time="2022-02-10T21:29:59Z" level=info msg="Service [tea-svc] has been added/modified, it has no assigned external addresses"
 time="2022-02-10T21:29:59Z" level=info msg="Service [kube-dns] has been added/modified, it has no assigned external addresses"
-time="2022-02-10T21:30:07Z" level=info msg="Peer Up" Key=10.1.1.245 State=BGP_FSM_OPENCONFIRM Topic=Peer
-2022/02/10 21:30:07 conf:<local_as:65000 neighbor_address:"10.1.1.245" peer_as:65000 > state:<local_as:65000 neighbor_address:"10.1.1.245" peer_as:65000 session_state:ESTABLISHED router_id:"10.1.1.245" > transport:<local_address:"192.168.200.61" local_port:36952 remote_port:179 >
+time="2022-02-10T21:30:07Z" level=info msg="Peer Up" Key=172.16.1245 State=BGP_FSM_OPENCONFIRM Topic=Peer
+2022/02/10 21:30:07 conf:<local_as:65000 neighbor_address:"172.16.1245" peer_as:65000 > state:<local_as:65000 neighbor_address:"172.16.1245" peer_as:65000 session_state:ESTABLISHED router_id:"172.16.1245" > transport:<local_address:"192.168.200.61" local_port:36952 remote_port:179 >
 ```
 
 ## Step 3: Deploy kube-vip Cloud Provider
@@ -198,7 +198,7 @@ time="2022-02-10T23:57:13Z" level=info msg="server started"
 time="2022-02-10T23:57:13Z" level=info msg="Starting Kube-vip Manager with the BGP engine"
 time="2022-02-10T23:57:13Z" level=info msg="Namespace [kube-system], Hybrid mode [false]"
 time="2022-02-10T23:57:13Z" level=info msg="Starting the BGP server to advertise VIP routes to BGP peers"
-time="2022-02-10T23:57:13Z" level=info msg="Add a peer configuration for:10.1.1.245" Topic=Peer
+time="2022-02-10T23:57:13Z" level=info msg="Add a peer configuration for:172.16.1245" Topic=Peer
 time="2022-02-10T23:57:13Z" level=info msg="Beginning watching services for type: LoadBalancer in all namespaces"
 time="2022-02-10T23:57:13Z" level=info msg="Service [coffee-svc] has been added/modified, it has no assigned external addresses"
 time="2022-02-10T23:57:13Z" level=info msg="Service [tea-svc] has been added/modified, it has no assigned external addresses"
@@ -208,8 +208,8 @@ time="2022-02-10T23:57:13Z" level=info msg="Service [nginx-ingress] has been add
 time="2022-02-10T23:57:13Z" level=info msg="New VIP [192.168.200.14] for [nginx-ingress/b15b1a7f-f3c0-4a94-a154-2906f936578b] "
 time="2022-02-10T23:57:13Z" level=info msg="Starting advertising address [192.168.200.14] with kube-vip"
 time="2022-02-10T23:57:13Z" level=info msg="Started Load Balancer and Virtual IP"
-time="2022-02-10T23:57:19Z" level=info msg="Peer Up" Key=10.1.1.245 State=BGP_FSM_OPENCONFIRM Topic=Peer
-2022/02/10 23:57:19 conf:<local_as:65000 neighbor_address:"10.1.1.245" peer_as:65000 > state:<local_as:65000 neighbor_address:"10.1.1.245" peer_as:65000 session_state:ESTABLISHED router_id:"10.1.1.245" > transport:<local_address:"192.168.200.61" local_port:47466 remote_port:179 >
+time="2022-02-10T23:57:19Z" level=info msg="Peer Up" Key=172.16.1245 State=BGP_FSM_OPENCONFIRM Topic=Peer
+2022/02/10 23:57:19 conf:<local_as:65000 neighbor_address:"172.16.1245" peer_as:65000 > state:<local_as:65000 neighbor_address:"172.16.1245" peer_as:65000 session_state:ESTABLISHED router_id:"172.16.1245" > transport:<local_address:"192.168.200.61" local_port:47466 remote_port:179 >
 ```
 
 Validate the **nginx-service**
