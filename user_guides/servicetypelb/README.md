@@ -86,7 +86,7 @@ Add the parameter --ipam=true in the CIS deployment to provide the integration w
 args: 
   - "--bigip-username=$(BIGIP_USERNAME)"
   - "--bigip-password=$(BIGIP_PASSWORD)"
-  - "--bigip-url=172.16.1245"
+  - "--bigip-url=172.16.1.245"
   - "--bigip-partition=k8s"
   - "--namespace=default"
   - "--pool-member-type=cluster"
@@ -174,13 +174,13 @@ Found 2 pods, using pod/f5-ipam-controller-5d76c6f964-n9v6p
 2021/04/20 17:10:47 [DEBUG] [STORE]  22  10.192.125.48 1 Production
 2021/04/20 17:10:47 [DEBUG] [STORE]  23  10.192.125.49 1 Production
 I0420 17:10:47.790510       1 shared_informer.go:240] Waiting for caches to sync for F5 IPAMClient Controller
-2021/04/20 17:10:47 [DEBUG] Enqueueing on Create: kube-system/ipam.172.16.1245.k8s
+2021/04/20 17:10:47 [DEBUG] Enqueueing on Create: kube-system/ipam.172.16.1.245.k8s
 I0420 17:10:47.903745       1 shared_informer.go:247] Caches are synced for F5 IPAMClient Controller
 2021/04/20 17:10:47 [DEBUG] K8S Orchestrator Started
 2021/04/20 17:10:47 [DEBUG] Starting Custom Resource Worker
 2021/04/20 17:10:47 [DEBUG] Starting Response Worker
 2021/04/20 17:10:47 [DEBUG] Processing Key: &{0xc000154160 <nil> Create}
-2021/04/20 17:12:35 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1245.k8s
+2021/04/20 17:12:35 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1.245.k8s
 2021/04/20 17:12:35 [DEBUG] Processing Key: &{0xc00055a840 0xc000154160 Update}
 ```
 
@@ -203,23 +203,23 @@ pod-deployments [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/us
 ## Logging output when the IPAM controller when the services are created
 
 ```
-2021/04/27 20:46:11 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1245.k8s
+2021/04/27 20:46:11 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1.245.k8s
 2021/04/27 20:46:11 [DEBUG] Processing Key: &{0xc0002d4000 0xc0004ec2c0 Update}
 2021/04/27 20:46:11 [DEBUG] [CORE] Allocated IP: 10.192.125.30 for Request:
 Hostname:       Key: default/f5-demo-production_svc     CIDR:   IPAMLabel: Production   IPAddr:         Operation: Create
 2021/04/27 20:46:11 [DEBUG] [PROV] Created 'A' Record. Host:default/f5-demo-production_svc, IP:10.192.125.30
-2021/04/27 20:46:11 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1245.k8s
+2021/04/27 20:46:11 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1.245.k8s
 2021/04/27 20:46:11 [DEBUG] Processing Key: &{0xc0002d4160 0xc0002d4000 Update}
-2021/04/27 20:46:11 [DEBUG] Updated: kube-system/ipam.172.16.1245.k8s with Status. With IP: 10.192.125.30 for Request:
+2021/04/27 20:46:11 [DEBUG] Updated: kube-system/ipam.172.16.1.245.k8s with Status. With IP: 10.192.125.30 for Request:
 Hostname:       Key: default/f5-demo-production_svc     CIDR:   IPAMLabel: Production   IPAddr: 10.192.125.30   Operation: Create
-2021/04/27 20:46:32 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1245.k8s
+2021/04/27 20:46:32 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1.245.k8s
 2021/04/27 20:46:32 [DEBUG] Processing Key: &{0xc00055a420 0xc0002d4160 Update}
 2021/04/27 20:46:32 [DEBUG] [CORE] Allocated IP: 10.192.75.113 for Request:
 Hostname:       Key: default/f5-demo-test_svc   CIDR:   IPAMLabel: Test IPAddr:         Operation: Create
 2021/04/27 20:46:32 [DEBUG] [PROV] Created 'A' Record. Host:default/f5-demo-test_svc, IP:10.192.75.113
-2021/04/27 20:46:32 [DEBUG] Updated: kube-system/ipam.172.16.1245.k8s with Status. With IP: 10.192.75.113 for Request:
+2021/04/27 20:46:32 [DEBUG] Updated: kube-system/ipam.172.16.1.245.k8s with Status. With IP: 10.192.75.113 for Request:
 Hostname:       Key: default/f5-demo-test_svc   CIDR:   IPAMLabel: Test IPAddr: 10.192.75.113   Operation: Create
-2021/04/27 20:46:32 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1245.k8s
+2021/04/27 20:46:32 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1.245.k8s
 2021/04/27 20:46:32 [DEBUG] Processing Key: &{0xc0002d4580 0xc00055a420 Update}
 ```
 
@@ -229,7 +229,7 @@ F5 IPAM Controller creates the following CRD to create the configuration between
 
 ```
 [kube@k8s-1-19-master production]$ kubectl describe f5ipam -n kube-system
-Name:         ipam.172.16.1245.k8s
+Name:         ipam.172.16.1.245.k8s
 Namespace:    kube-system
 Labels:       <none>
 Annotations:  <none>
@@ -264,7 +264,7 @@ Metadata:
     Operation:       Update
     Time:            2021-04-27T20:46:32Z
   Resource Version:  52405608
-  Self Link:         /apis/fic.f5.com/v1/namespaces/kube-system/f5ipams/ipam.172.16.1245.k8s
+  Self Link:         /apis/fic.f5.com/v1/namespaces/kube-system/f5ipams/ipam.172.16.1.245.k8s
   UID:               611befc3-63e3-4558-858e-3868adf9bda4
 Spec:
   Host Specs:

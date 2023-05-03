@@ -40,7 +40,7 @@ Add the parameter --ipam=true in the CIS deployment to provide the integration w
 args: 
   - "--bigip-username=$(BIGIP_USERNAME)"
   - "--bigip-password=$(BIGIP_PASSWORD)"
-  - "--bigip-url=172.16.1245"
+  - "--bigip-url=172.16.1.245"
   - "--bigip-partition=k8s"
   - "--namespace=default"
   - "--pool-member-type=cluster"
@@ -108,7 +108,7 @@ $ kubectl logs -f deploy/f5-ipam-controller -n kube-system
 2021/07/13 17:39:40 [INFO] [CORE] Controller started
 2021/07/13 17:39:40 [INFO] Starting IPAMClient Informer
 I0713 17:39:40.221163       1 shared_informer.go:240] Waiting for caches to sync for F5 IPAMClient Controller
-2021/07/13 17:39:40 [DEBUG] Enqueueing on Create: kube-system/ipam.172.16.1245.k8s
+2021/07/13 17:39:40 [DEBUG] Enqueueing on Create: kube-system/ipam.172.16.1.245.k8s
 I0713 17:39:40.322244       1 shared_informer.go:247] Caches are synced for F5 IPAMClient Controller
 2021/07/13 17:39:40 [DEBUG] K8S Orchestrator Started
 2021/07/13 17:39:40 [DEBUG] Starting Custom Resource Worker
@@ -183,12 +183,12 @@ crd-example [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_g
 **myapp.f5demo.com**
 
 ```
-2021/07/13 17:52:21 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1245.k8s
+2021/07/13 17:52:21 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1.245.k8s
 2021/07/13 17:52:21 [DEBUG] Processing Key: &{0xc0001e6160 0xc0001e7ce0 Update}
 Hostname: myapp.f5demo.com      Key:    CIDR: 10.192.125.32/28  IPAMLabel: Production   IPAddr:         Operation: Create
 2021/07/13 17:52:21 [DEBUG] [CORE] Allocated IP: 10.192.125.33 for Request:
 Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr:         Operation: Create
-2021/07/13 17:52:21 [DEBUG] Updated: kube-system/ipam.172.16.1245.k8s with Status. With IP: 10.192.125.33 for Request:
+2021/07/13 17:52:21 [DEBUG] Updated: kube-system/ipam.172.16.1.245.k8s with Status. With IP: 10.192.125.33 for Request:
 Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr: 10.192.125.33   Operation: Create
 ```
 ipamLabel: Production Infoblox setup
@@ -202,12 +202,12 @@ ipam status for CRD
 **mysite.f5demo.com**
 
 ```
-2021/07/13 17:41:06 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1245.k8s
+2021/07/13 17:41:06 [DEBUG] Enqueueing on Update: kube-system/ipam.172.16.1.245.k8s
 2021/07/13 17:41:06 [DEBUG] Processing Key: &{0xc0001e7080 0xc000195340 Update}
 Hostname: mysite.f5demo.com     Key:    CIDR: 10.192.75.112/30  IPAMLabel: Test IPAddr:         Operation: Create
 2021/07/13 17:41:07 [DEBUG] [CORE] Allocated IP: 10.192.75.113 for Request:
 Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr:         Operation: Create
-2021/07/13 17:41:07 [DEBUG] Updated: kube-system/ipam.172.16.1245.k8s with Status. With IP: 10.192.75.113 for Request:
+2021/07/13 17:41:07 [DEBUG] Updated: kube-system/ipam.172.16.1.245.k8s with Status. With IP: 10.192.75.113 for Request:
 Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr: 10.192.75.113   Operation: Create
 ```
 ipamLabel: Test Infoblox setup

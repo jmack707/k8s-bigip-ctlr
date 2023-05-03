@@ -68,12 +68,12 @@ annotations:
 ### Create vxlan tunnels and self-IPs for the dev cluster
 
 * create net tunnels vxlan fl-vxlan port 8472 flooding-type none
-* create net tunnel tunnel vxlan-tunnel-dev key 1 profile fl-vxlan local-address 172.16.1245
+* create net tunnel tunnel vxlan-tunnel-dev key 1 profile fl-vxlan local-address 172.16.1.245
 * create net self 10.244.20.60 address 10.244.20.60/255.255.0.0 allow-service none vlan vxlan-tunnel-dev
 
 ### Create vxlan tunnels and self-IPs for the prod cluster
 
-* create net tunnel tunnel vxlan-tunnel-prod key 11 profile fl-vxlan local-address 172.16.1245
+* create net tunnel tunnel vxlan-tunnel-prod key 11 profile fl-vxlan local-address 172.16.1.245
 * create net self 10.245.20.60 address 10.245.20.60/255.255.0.0 allow-service none vlan vxlan-tunnel-prod
 
 ### Example of vxlan tunnels and Self-IPs for the vxlan-tunnel-dev
@@ -164,7 +164,7 @@ metadata:
     flannel.alpha.coreos.com/backend-type: "vxlan"
     flannel.alpha.coreos.com/kube-subnet-manager: "true"
     #Replace IP with Self-IP for your deployment
-    flannel.alpha.coreos.com/public-ip: "172.16.1245"
+    flannel.alpha.coreos.com/public-ip: "172.16.1.245"
 spec:
   #Replace Subnet with your BIGIP Flannel Subnet
   podCIDR: "10.244.20.0/24
@@ -182,7 +182,7 @@ metadata:
     flannel.alpha.coreos.com/backend-type: "vxlan"
     flannel.alpha.coreos.com/kube-subnet-manager: "true"
     #Replace IP with Self-IP for your deployment
-    flannel.alpha.coreos.com/public-ip: "172.16.1245"
+    flannel.alpha.coreos.com/public-ip: "172.16.1.245"
 spec:
   #Replace Subnet with your BIGIP Flannel Subnet
   podCIDR: "10.245.20.0/24"
@@ -205,7 +205,7 @@ Configuration options available in the CIS controller for the dev-cluster
           args: 
             - "--bigip-username=$(BIGIP_USERNAME)"
             - "--bigip-password=$(BIGIP_PASSWORD)"
-            - "--bigip-url=172.16.1245"
+            - "--bigip-url=172.16.1.245"
             - "--bigip-partition=dev"
             - "--namespace=dev"
             - "--pool-member-type=cluster"
@@ -226,7 +226,7 @@ Configuration options available in the CIS controller for the prod-cluster
           args: 
             - "--bigip-username=$(BIGIP_USERNAME)"
             - "--bigip-password=$(BIGIP_PASSWORD)"
-            - "--bigip-url=172.16.1245"
+            - "--bigip-url=172.16.1.245"
             - "--bigip-partition=prod"
             - "--namespace=prod"
             - "--pool-member-type=cluster"
@@ -361,7 +361,7 @@ The following are the recommended configuration to implement API POST delays:
           args: 
             - "--bigip-username=$(BIGIP_USERNAME)"
             - "--bigip-password=$(BIGIP_PASSWORD)"
-            - "--bigip-url=172.16.1245"
+            - "--bigip-url=172.16.1.245"
             - "--bigip-partition=dev"
             - "--namespace=dev"
             - "--pool-member-type=cluster"

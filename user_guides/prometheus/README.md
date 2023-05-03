@@ -179,7 +179,7 @@ Since we created a config map with all the prometheus scrape config and alerting
           username: 'prometheus'
           password: 'secret'
         static_configs:
-        - targets: ['172.16.1245']
+        - targets: ['172.16.1.245']
 
       - job_name: cis
         scrape_interval: 10s

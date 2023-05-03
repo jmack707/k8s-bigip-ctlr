@@ -22,7 +22,7 @@ CIS deployment arguments
 args: 
   - "--bigip-username=$(BIGIP_USERNAME)"
   - "--bigip-password=$(BIGIP_PASSWORD)"
-  - "--bigip-url=172.16.1245"
+  - "--bigip-url=172.16.1.245"
   - "--bigip-partition=k8s"
   - "--pool-member-type=cluster"
   - "--flannel-name=fl-vxlan"
