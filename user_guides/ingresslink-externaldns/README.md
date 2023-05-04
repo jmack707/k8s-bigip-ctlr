@@ -236,7 +236,7 @@ ingresslink.cis.f5.com/nginx-ingress                    4h25m
 ingresslink.cis.f5.com/vs-ingresslink                   4h19m
 
 NAME                               DOMAINNAME         AGE     CREATED ON
-externaldns.cis.f5.com/edns-cafe   cafe.example.com   4h12m   2022-03-10T21:17:36Z
+externaldns.cis.f5.com/edns-cafe   cafe.1broken.net   4h12m   2022-03-10T21:17:36Z
 ```
 
 #### Validate the Wide-IP on BIG0-IP DNS
