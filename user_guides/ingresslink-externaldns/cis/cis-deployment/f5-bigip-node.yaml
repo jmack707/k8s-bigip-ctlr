@@ -4,7 +4,7 @@ metadata:
   name: bigip1
   annotations:
     #Replace MAC with your BIGIP Flannel VXLAN Tunnel MAC
-    flannel.alpha.coreos.com/backend-data: '{"VtepMAC":"08:00:27:da:a1:3c"}'
+    flannel.alpha.coreos.com/backend-data: '{"VtepMAC":"de:e4:e0:92:8c:2e"}'
     flannel.alpha.coreos.com/backend-type: "vxlan"
     flannel.alpha.coreos.com/kube-subnet-manager: "true"
     #Replace IP with Self-IP for your deployment
