@@ -1,0 +1,25 @@
+kubectl delete secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=bigip123
+kubectl delete -f cis/cis-deployment/bigip-ctlr-clusterrole.yaml
+kubectl delete -f cis/cis-crd-schema/customresourcedefinitions.yaml
+kubectl delete -f cis/cis-deployment/f5-bigip-ctlr-deployment.yaml
+kubectl delete -f cis/cis-deployment/f5-bigip-node.yaml
+
+kubectl apply -f nginx-config/crd-schema/k8s.nginx.org_virtualservers.yaml
+kubectl apply -f nginx-config/crd-schema/k8s.nginx.org_virtualserverroutes.yaml
+kubectl apply -f nginx-config/crd-schema/k8s.nginx.org_transportservers.yaml
+kubectl apply -f nginx-config/crd-schema/k8s.nginx.org_policies.yaml
+
+kubectl delete -f nginx-config/ns-and-sa.yaml
+kubectl delete -f nginx-config/rbac.yaml
+kubectl delete -f nginx-config/default-server-secret.yaml
+kubectl delete -f nginx-config/nginx-config.yaml
+kubectl delete -f nginx-config/ingress-class.yaml
+kubectl delete -f nginx-config/nginx-ingress.yaml
+kubectl delete -f nginx-config/nginx-service.yaml
+
+kubectl delete -f ingress-example/cafe.yaml
+kubectl delete -f ingress-example/cafe-secret.yaml
+kubectl delete -f ingress-example/cafe-ingress.yaml
+
+kubectl delete -f cis/crd-resource/edns-cafe.yaml
+kubectl delete -f cis/crd-resource/vs-ingresslink.yaml
