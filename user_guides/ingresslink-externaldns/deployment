@@ -1,0 +1,25 @@
+kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=bigip123
+kubectl create -f cis/cis-deployment/bigip-ctlr-clusterrole.yaml
+kubectl create -f cis/cis-crd-schema/customresourcedefinitions.yaml
+kubectl create -f cis/cis-deployment/f5-bigip-ctlr-deployment.yaml
+kubectl create -f cis/cis-deployment/f5-bigip-node.yaml
+
+kubectl apply -f nginx-config/crd-schema/k8s.nginx.org_virtualservers.yaml
+kubectl apply -f nginx-config/crd-schema/k8s.nginx.org_virtualserverroutes.yaml
+kubectl apply -f nginx-config/crd-schema/k8s.nginx.org_transportservers.yaml
+kubectl apply -f nginx-config/crd-schema/k8s.nginx.org_policies.yaml
+
+kubectl create -f nginx-config/ns-and-sa.yaml
+kubectl create -f nginx-config/rbac.yaml
+kubectl create -f nginx-config/default-server-secret.yaml
+kubectl create -f nginx-config/nginx-config.yaml
+kubectl create -f nginx-config/ingress-class.yaml
+kubectl create -f nginx-config/nginx-ingress.yaml
+kubectl create -f nginx-config/nginx-service.yaml
+
+kubectl create -f ingress-example/cafe.yaml
+kubectl create -f ingress-example/cafe-secret.yaml
+kubectl create -f ingress-example/cafe-ingress.yaml
+
+kubectl create -f cis/crd-resource/edns-cafe.yaml
+kubectl create -f cis/crd-resource/vs-ingresslink.yaml
